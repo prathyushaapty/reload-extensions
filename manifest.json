@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    "name": "Refresh Extensions",
+    "description": "This extension reloads all the developer mode extensions and the current page",
+    "version": "1.0",
+    "browser_action": {
+        // "default_icon": "img/CDRed.png",
+        "default_title": "Refresh"
+    },
+    "background": {
+        "scripts": [
+            "lib/jquery-3.1.1.js",
+            "localStorage.js",
+            "background.js"
+        ]
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "clipboardWrite",
+        "tabs",
+        "cookies",
+        "system.memory",
+        "webRequest",
+        "webRequestBlocking",
+        "http://*/",
+        "https://*/"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "lib/jquery-3.1.1.js",
+                "script.js",
+                "localStorage.js"
+            ]
+        }
+    ]
+}
